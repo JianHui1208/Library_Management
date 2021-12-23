@@ -241,4 +241,28 @@ return [
             'updated_at'                => 'Updated At',
         ]
     ],
+    'bookLoan' => [
+        'title'          => 'Book Loans',
+        'title_singular' => 'Book Loan',
+        'fields'         => [
+            'id'                  => 'ID',
+            'id_helper'           => ' ',
+            'user'                => 'User',
+            'user_helper'         => ' ',
+            'book'                => 'Book',
+            'book_helper'         => ' ',
+            'expired_time'        => 'Expired Time',
+            'expired_time_helper' => ' ',
+            'status'              => 'Status',
+            'status_helper'       => ' ',
+            'expired_pay'         => 'Expired Pay',
+            'expired_pay_helper'  => ' ',
+            'created_at'          => 'Created at',
+            'created_at_helper'   => ' ',
+            'updated_at'          => 'Updated at',
+            'updated_at_helper'   => ' ',
+            'deleted_at'          => 'Deleted at',
+            'deleted_at_helper'   => ' ',
+        ],
+    ],
 ];

@@ -260,6 +260,31 @@ class PermissionsTableSeeder extends Seeder
                 'title' => 'laravel_passport_access', 
                 'type'  => 'Laravel Passport'
             ],
+            [
+                'id'    => 51,
+                'title' => 'book_loan_create',
+                'type'  => 'book_loan'
+            ],
+            [
+                'id'    => 52,
+                'title' => 'book_loan_edit',
+                'type'  => 'book_loan'
+            ],
+            [
+                'id'    => 53,
+                'title' => 'book_loan_show',
+                'type'  => 'book_loan'
+            ],
+            [
+                'id'    => 54,
+                'title' => 'book_loan_delete',
+                'type'  => 'book_loan'
+            ],
+            [
+                'id'    => 55,
+                'title' => 'book_loan_access',
+                'type'  => 'book_loan'
+            ],
         ];
 
         Permission::insert($permissions);

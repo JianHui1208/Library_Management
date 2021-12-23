@@ -1,8 +1,14 @@
 <?php
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+
 Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin'], function () {
 
     Route::group(['middleware' => ['auth:api', 'scope:view-user']], function () {
+        Route::GET('/user', function (Request $request) {
+            return $request->user();
+        });
 
     });
 
@@ -30,4 +36,7 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin'], 
 
     // Question
     Route::apiResource('questions', 'QuestionApiController');
+
+    // Book Loans
+    Route::apiResource('book-loans', 'BookLoansApiController');
 });

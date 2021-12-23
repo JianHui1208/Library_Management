@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Carbon\Carbon;
 use App\Models\BookList;
 use App\Models\BookCategory;
 use Faker\Generator as Faker;
@@ -31,6 +30,8 @@ class BookListTableSeeder extends Seeder
                 'language'          => rand(1,3),
                 'year'              => rand(1990, 2022),
                 'status'            => rand(1,4),
+                'created_at'        => now(),
+                'updated_at'        => now(),
             ];
 
             array_push($booklist, $list);

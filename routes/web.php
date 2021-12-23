@@ -1,5 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+
 Route::redirect('/', '/login');
 Route::get('/home', function () {
     if (session('status')) {
@@ -57,6 +60,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // Laravel Passport
     Route::delete('laravel-passports/destroy', 'LaravelPassportController@massDestroy')->name('laravel-passports.massDestroy');
     Route::resource('laravel-passports', 'LaravelPassportController');
+
+    // Book Loans
+    Route::delete('book-loans/destroy', 'BookLoansController@massDestroy')->name('book-loans.massDestroy');
+    Route::resource('book-loans', 'BookLoansController');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
     // Change password

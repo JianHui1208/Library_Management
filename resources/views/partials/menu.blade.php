@@ -109,6 +109,17 @@
                                 </a>
                             </li>
                         @endcan
+                        @can('book_loan_access')
+                            <li class="{{ request()->is("admin/book-loans") || request()->is("admin/book-loans/*") ? "active" : "" }}">
+                                <a href="{{ route("admin.book-loans.index") }}">
+                                    <i class="fa-fw fas fa-piggy-bank">
+
+                                    </i>
+                                    <span>{{ trans('cruds.bookLoan.title') }}</span>
+
+                                </a>
+                            </li>
+                        @endcan
                     </ul>
                 </li>
             @endcan

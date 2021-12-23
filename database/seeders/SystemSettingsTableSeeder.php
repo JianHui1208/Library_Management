@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Carbon\Carbon;
 use App\Models\SystemSetting;
 use Illuminate\Database\Seeder;
 
@@ -22,8 +21,17 @@ class SystemSettingsTableSeeder extends Seeder
                 'layout'        => '2',
                 'key'           => 'email_verification',
                 'value'         => true,
-                'created_at'    => Carbon::now(),
-                'updated_at'    => Carbon::now()
+                'created_at'    => now(),
+                'updated_at'    => now()
+            ],
+            [
+                'title'         => 'Book Expired Time (Day)',
+                'type'          => 'Expired',
+                'layout'        => '1',
+                'key'           => 'book_expired_time',
+                'value'         => 5,
+                'created_at'    => now(),
+                'updated_at'    => now()
             ],
         ];
 

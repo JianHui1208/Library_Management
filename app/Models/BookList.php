@@ -89,12 +89,13 @@ class BookList extends Model implements HasMedia
         return $date->format('Y-m-d H:i:s');
     }
 
-    public function generateUID()
+    public static function generateUID()
     {
         $now = Carbon::now()->format('ymd');
-        $randNum1=substr(str_shuffle("0123456789"), 0, 4);
+        $randNum1 = substr(str_shuffle("0123456789"), 0, 4);
+        $randNum2 = substr(str_shuffle("0123456789"), 0, 4);
 
-        $UID = 'BOOK_'.$now.'_'.$randNum1;
+        $UID = 'BOOK_'.$now.'_'.$randNum1.'_'.$randNum2;
 
         return $UID;
     }

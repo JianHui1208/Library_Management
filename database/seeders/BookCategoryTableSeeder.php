@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Carbon\Carbon;
 use App\Models\BookCategory;
 use Faker\Generator as Faker;
 use Illuminate\Database\Seeder;
@@ -23,8 +22,8 @@ class BookCategoryTableSeeder extends Seeder
                 'title'         => $faker->title,
                 'description'   => $faker->paragraph,
                 'status'        => rand(1, 2),
-                'created_at'    => Carbon::now(),
-                'updated_at'    => Carbon::now(),
+                'created_at'    => now(),
+                'updated_at'    => now(),
             ];
 
             array_push($array_category, $category);
