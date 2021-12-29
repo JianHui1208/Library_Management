@@ -3,13 +3,30 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
-Route::redirect('/', '/login');
+// Route::redirect('/', '/index');
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
 Route::get('/home', function () {
     if (session('status')) {
         return redirect()->route('admin.home')->with('status', session('status'));
     }
 
     return redirect()->route('admin.home');
+});
+
+Route::group(['as' => 'admin.'], function () {
+    Route::get('login-admin', 'Auth\LoginController@showLoginForm')->name('login.show');
+    Route::post('login-admin', 'Auth\LoginController@login')->name('login');
+    Route::post('logout-admin', 'Auth\LoginController@logout')->name('logout');
+});
+
+Route::group(['as' => 'users.'], function () {
+    Route::get('login-users', 'Auth\LoginController@showLoginForm')->name('login.show');
+    Route::post('login-users', 'Auth\LoginController@login')->name('login');
+    Route::post('logout-users', 'Auth\LoginController@logout')->name('logout');
 });
 
 Route::get('userVerification/{token}', 'UserVerificationController@approve')->name('userVerification');
