@@ -48,16 +48,20 @@ table.dataTable thead .sorting_desc {
 .searchable-title {
     font-weight: bold;
 }
+
 .searchable-fields {
-    padding-left:5px;
+    padding-left: 5px;
 }
+
 .searchable-link {
-    padding:0 5px 0 5px;
+    padding: 0 5px 0 5px;
 }
-.searchable-link:hover   {
+
+.searchable-link:hover {
     cursor: pointer;
     background: #eaeaea;
 }
+
 .select2-results__option {
     padding-left: 0px;
     padding-right: 0px;
@@ -66,4 +70,11 @@ table.dataTable thead .sorting_desc {
 .form-group .required::after {
     content: " *";
     color: red;
+}
+
+#map {
+    height: 400px;
+    /* The height is 400 pixels */
+    width: 100%;
+    /* The width is the width of the web page */
 }

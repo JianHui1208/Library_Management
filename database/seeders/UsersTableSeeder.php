@@ -18,9 +18,10 @@ class UsersTableSeeder extends Seeder
                 'remember_token'     => null,
                 'verified'           => 1,
                 'verified_at'        => now(),
-                'verification_token' => '',
+                'verification_token' => null,
                 'username'           => 'Admin',
                 'phone_number'       => '+60181234568',
+                'type'               => 1,
             ],
         ];
 

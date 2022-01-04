@@ -4,9 +4,9 @@ namespace App\Models;
 
 use \DateTimeInterface;
 use App\Notifications\VerifyUserNotification;
+use Illuminate\Support\Facades\Hash;
 use App\Traits\Auditable;
 use Carbon\Carbon;
-use Hash;
 use App\Models\SystemSetting;
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
