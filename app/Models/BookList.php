@@ -47,6 +47,7 @@ class BookList extends Model implements HasMedia
     protected $fillable = [
         'uid',
         'title',
+        'description',
         'book_category_id',
         'language',
         'year',

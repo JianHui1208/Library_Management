@@ -73,6 +73,7 @@ return [
     'body'                           => 'Body',
     'discard'                        => 'Discard',
     'active'                         => 'Active',
+    'languages'                      => 'Languages',
     'datatables'                     => [
         'copy'          => 'Copy',
         'csv'           => 'CSV',

@@ -35,6 +35,14 @@
                                 </tr>
                                 <tr>
                                     <th>
+                                        {{ trans('cruds.bookList.fields.description') }}
+                                    </th>
+                                    <td>
+                                        {{ $bookList->description }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
                                         {{ trans('cruds.bookList.fields.book_category') }}
                                     </th>
                                     <td>
@@ -84,6 +92,8 @@
                                             <a href="{{ $bookList->image->getUrl() }}" target="_blank" style="display: inline-block">
                                                 <img src="{{ $bookList->image->getUrl('thumb') }}">
                                             </a>
+                                        @else
+                                            <img width="50" src="{{ asset('image/book.png') }}">
                                         @endif
                                     </td>
                                 </tr>

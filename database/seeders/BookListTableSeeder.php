@@ -26,6 +26,7 @@ class BookListTableSeeder extends Seeder
             $list = [
                 'uid'               => BookList::generateUID(),
                 'title'             => $faker->name,
+                'description'       => $faker->paragraph,
                 'book_category_id'  => rand($min['id'], $max['id']),
                 'language'          => rand(1,3),
                 'year'              => rand(1990, 2022),

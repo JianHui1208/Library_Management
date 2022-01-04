@@ -27,6 +27,14 @@
                             @endif
                             <span class="help-block">{{ trans('cruds.bookList.fields.title_helper') }}</span>
                         </div>
+                        <div class="form-group {{ $errors->has('description') ? 'has-error' : '' }}">
+                            <label for="description">{{ trans('cruds.bookList.fields.description') }}</label>
+                            <textarea class="form-control" name="description" id="description">{{ old('description') }}</textarea>
+                            @if($errors->has('description'))
+                                <span class="help-block" role="alert">{{ $errors->first('description') }}</span>
+                            @endif
+                            <span class="help-block">{{ trans('cruds.bookList.fields.description_helper') }}</span>
+                        </div>
                         <div class="form-group {{ $errors->has('book_category') ? 'has-error' : '' }}">
                             <label for="book_category_id">{{ trans('cruds.bookList.fields.book_category') }}</label>
                             <select class="form-control select2" name="book_category_id" id="book_category_id">

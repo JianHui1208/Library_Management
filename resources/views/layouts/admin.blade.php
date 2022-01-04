@@ -60,8 +60,6 @@
                         </ul>
                     </div>
                 @endif
-
-
             </nav>
         </header>
 

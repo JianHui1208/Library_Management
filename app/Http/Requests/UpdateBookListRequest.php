@@ -17,11 +17,11 @@ class UpdateBookListRequest extends FormRequest
     public function rules()
     {
         return [
-            'uid' => [
-                'string',
-                'required',
-                'unique:book_lists,uid,' . request()->route('book_list')->id,
-            ],
+            // 'uid' => [
+            //     'string',
+            //     'required',
+            //     'unique:book_lists,uid,' . request()->route('book_list')->id,
+            // ],
             'title' => [
                 'string',
                 'nullable',

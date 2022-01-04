@@ -6,7 +6,7 @@ return [
     'primary_language'    => 'en',
     'available_languages' => [
         'en' => 'English',
-        'zh-Hans' => 'Chinese',
+        'zh-Hans' => '华文',
     ],
     'registration_default_role' => '2',
 ];

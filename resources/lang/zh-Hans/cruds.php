@@ -137,6 +137,8 @@ return [
             'uid_helper'           => ' ',
             'title'                => 'Title',
             'title_helper'         => ' ',
+            'description'          => 'Description',
+            'description_helper'   => ' ',
             'book_category'        => 'Book Category',
             'book_category_helper' => ' ',
             'year'                 => 'Year',

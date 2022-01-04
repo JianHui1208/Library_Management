@@ -91,6 +91,14 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::resource('content-managements', 'ContentManagementController');
 });
 
+Route::group(['prefix' => 'users', 'as' => 'users.', 'namespace' => 'User', 'middleware' => ['auth']], function () {
+
+    Route::get('book-lists', 'BookListController@getBookList')->name('bookList');
+    Route::get('book-lists/{uid}', 'BookListController@showBookList')->name('bookList.show');
+
+    Route::get('my-book-loan', 'BookLoanController@getBookLoan')->name('my-book-loan');
+});
+
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
     // Change password
     if (file_exists(app_path('Http/Controllers/Auth/ChangePasswordController.php'))) {

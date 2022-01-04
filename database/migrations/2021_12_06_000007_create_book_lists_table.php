@@ -12,6 +12,7 @@ class CreateBookListsTable extends Migration
             $table->bigIncrements('id');
             $table->string('uid')->unique();
             $table->string('title')->nullable();
+            $table->string('description')->nullable();
             $table->string('language')->nullable();
             $table->integer('year')->nullable();
             $table->string('status')->nullable();
