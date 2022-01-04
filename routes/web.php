@@ -51,6 +51,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     // Book Category
     Route::delete('book-categories/destroy', 'BookCategoryController@massDestroy')->name('book-categories.massDestroy');
+    Route::POST('book-categories/actions', 'BookCategoryController@actions')->name('book-categories.actions');
     Route::resource('book-categories', 'BookCategoryController');
 
     // Book List
@@ -83,11 +84,13 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::resource('book-loans', 'BookLoansController');
 
     // Content Management
+    Route::POST('content-management/actions', 'ContentManagementController@actions')->name('content-managements.actions');
     Route::delete('content-managements/destroy', 'ContentManagementController@massDestroy')->name('content-managements.massDestroy');
     Route::post('content-managements/media', 'ContentManagementController@storeMedia')->name('content-managements.storeMedia');
     Route::post('content-managements/ckmedia', 'ContentManagementController@storeCKEditorImages')->name('content-managements.storeCKEditorImages');
     Route::resource('content-managements', 'ContentManagementController');
 });
+
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
     // Change password
     if (file_exists(app_path('Http/Controllers/Auth/ChangePasswordController.php'))) {

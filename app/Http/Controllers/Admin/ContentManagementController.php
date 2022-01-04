@@ -7,12 +7,13 @@ use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Http\Requests\MassDestroyContentManagementRequest;
 use App\Http\Requests\StoreContentManagementRequest;
 use App\Http\Requests\UpdateContentManagementRequest;
+use Illuminate\Support\Facades\Gate;
 use App\Models\ContentManagement;
-use Gate;
 use Illuminate\Http\Request;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Symfony\Component\HttpFoundation\Response;
 use Yajra\DataTables\Facades\DataTables;
+use Brian2694\Toastr\Facades\Toastr;
 
 class ContentManagementController extends Controller
 {
@@ -32,16 +33,18 @@ class ContentManagementController extends Controller
             $table->editColumn('actions', function ($row) {
                 $viewGate = 'content_management_show';
                 $editGate = 'content_management_edit';
+                $actionGate = 'content_management_edit';
                 $deleteGate = 'content_management_delete';
                 $crudRoutePart = 'content-managements';
 
                 return view('partials.datatablesActions', compact(
-                'viewGate',
-                'editGate',
-                'deleteGate',
-                'crudRoutePart',
-                'row'
-            ));
+                    'viewGate',
+                    'editGate',
+                    'deleteGate',
+                    'actionGate',
+                    'crudRoutePart',
+                    'row'
+                ));
             });
 
             $table->editColumn('id', function ($row) {
@@ -156,5 +159,21 @@ class ContentManagementController extends Controller
         $media         = $model->addMediaFromRequest('upload')->toMediaCollection('ck-media');
 
         return response()->json(['id' => $media->id, 'url' => $media->getUrl()], Response::HTTP_CREATED);
+    }
+
+    public function actions(Request $request)
+    {
+        $contentManagement = ContentManagement::where('id', '=', $request->input('id'))->first();
+
+        if($contentManagement->status == 1){
+            $contentManagement->status = 2;
+        } else {
+            $contentManagement->status = 1;
+        }
+
+        $contentManagement->save();
+
+        Toastr::success('Content Status Updated Successfully','Success');
+        return back();
     }
 }

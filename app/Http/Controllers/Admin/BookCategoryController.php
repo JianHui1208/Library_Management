@@ -6,8 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\MassDestroyBookCategoryRequest;
 use App\Http\Requests\StoreBookCategoryRequest;
 use App\Http\Requests\UpdateBookCategoryRequest;
+use Brian2694\Toastr\Facades\Toastr;
 use App\Models\BookCategory;
-use Gate;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Yajra\DataTables\Facades\DataTables;
@@ -28,16 +29,18 @@ class BookCategoryController extends Controller
             $table->editColumn('actions', function ($row) {
                 $viewGate = 'book_category_show';
                 $editGate = 'book_category_edit';
+                $actionGate = 'book_category_edit';
                 $deleteGate = 'book_category_delete';
                 $crudRoutePart = 'book-categories';
 
                 return view('partials.datatablesActions', compact(
-                'viewGate',
-                'editGate',
-                'deleteGate',
-                'crudRoutePart',
-                'row'
-            ));
+                    'viewGate',
+                    'editGate',
+                    'deleteGate',
+                    'actionGate',
+                    'crudRoutePart',
+                    'row'
+                ));
             });
 
             $table->editColumn('title', function ($row) {
@@ -107,5 +110,21 @@ class BookCategoryController extends Controller
         BookCategory::whereIn('id', request('ids'))->delete();
 
         return response(null, Response::HTTP_NO_CONTENT);
+    }
+
+    public function actions(Request $request)
+    {
+        $itemCategory = BookCategory::where('id', $request->input('id'))->first();
+
+        if($itemCategory->status == 1){
+            $itemCategory->status = 2;
+        } else {
+            $itemCategory->status = 1;
+        }
+
+        $itemCategory->save();
+
+        Toastr::success('Book Category Status Updated Successfully','Success');
+        return back();
     }
 }

@@ -124,7 +124,7 @@
                 </li>
             @endcan
             @can('system_setting_access')
-                <li class="{{ request()->is("admin/system-settings") || request()->is("admin/system-settings/*") ? "active" : "" }}">
+                <li class="{{ request()->is('admin/system-settings') || request()->is("admin/system-settings/*") ? "active" : "" }}">
                     <a href="{{ route("admin.system-settings.index") }}">
                         <i class="fa-fw fas fa-cogs">
 
@@ -135,7 +135,7 @@
                 </li>
             @endcan
             @can('question_access')
-                <li class="{{ request()->is("admin/questions") || request()->is("admin/questions/*") ? "active" : "" }}">
+                <li class="{{ request()->is('admin/questions') || request()->is("admin/questions/*") ? "active" : "" }}">
                     <a href="{{ route("admin.questions.index") }}">
                         <i class="fa-fw fas fa-question-circle">
 
