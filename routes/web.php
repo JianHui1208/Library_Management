@@ -81,6 +81,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // Book Loans
     Route::delete('book-loans/destroy', 'BookLoansController@massDestroy')->name('book-loans.massDestroy');
     Route::resource('book-loans', 'BookLoansController');
+
+    // Content Management
+    Route::delete('content-managements/destroy', 'ContentManagementController@massDestroy')->name('content-managements.massDestroy');
+    Route::post('content-managements/media', 'ContentManagementController@storeMedia')->name('content-managements.storeMedia');
+    Route::post('content-managements/ckmedia', 'ContentManagementController@storeCKEditorImages')->name('content-managements.storeCKEditorImages');
+    Route::resource('content-managements', 'ContentManagementController');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
     // Change password

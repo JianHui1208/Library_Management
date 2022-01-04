@@ -285,6 +285,31 @@ class PermissionsTableSeeder extends Seeder
                 'title' => 'book_loan_access',
                 'type'  => 'book_loan'
             ],
+            [
+                'id'    => 56,
+                'title' => 'content_management_create',
+                'type'  => 'content_management'
+            ],
+            [
+                'id'    => 57,
+                'title' => 'content_management_edit',
+                'type'  => 'content_management'
+            ],
+            [
+                'id'    => 58,
+                'title' => 'content_management_show',
+                'type'  => 'content_management'
+            ],
+            [
+                'id'    => 59,
+                'title' => 'content_management_delete',
+                'type'  => 'content_management'
+            ],
+            [
+                'id'    => 60,
+                'title' => 'content_management_access',
+                'type'  => 'content_management'
+            ],
         ];
 
         Permission::insert($permissions);

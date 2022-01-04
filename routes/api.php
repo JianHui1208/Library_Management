@@ -39,4 +39,8 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin'], 
 
     // Book Loans
     Route::apiResource('book-loans', 'BookLoansApiController');
+
+    // Content Management
+    Route::post('content-managements/media', 'ContentManagementApiController@storeMedia')->name('content-managements.storeMedia');
+    Route::apiResource('content-managements', 'ContentManagementApiController');
 });

@@ -155,6 +155,17 @@
                     </a>
                 </li>
             @endcan
+            @can('content_management_access')
+                <li class="{{ request()->is("admin/content-managements") || request()->is("admin/content-managements/*") ? "active" : "" }}">
+                    <a href="{{ route("admin.content-managements.index") }}">
+                        <i class="fa-fw far fa-image">
+
+                        </i>
+                        <span>{{ trans('cruds.contentManagement.title') }}</span>
+
+                    </a>
+                </li>
+            @endcan
             @if(file_exists(app_path('Http/Controllers/Auth/ChangePasswordController.php')))
                 @can('profile_password_edit')
                     <li class="{{ request()->is('profile/password') || request()->is('profile/password/*') ? 'active' : '' }}">
