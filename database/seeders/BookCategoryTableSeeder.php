@@ -19,7 +19,7 @@ class BookCategoryTableSeeder extends Seeder
 
         for ($i=0; $i <= 15; $i++) { 
             $category = [
-                'title'         => $faker->title,
+                'title'         => $faker->word,
                 'description'   => $faker->paragraph,
                 'status'        => rand(1, 2),
                 'created_at'    => now(),

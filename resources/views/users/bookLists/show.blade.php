@@ -23,12 +23,15 @@
                         <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
                             <h1>{{ trans('cruds.bookList.fields.title') }}: {{ $bookLists->title }}</h1>
                             <h3>{{ trans('cruds.bookList.fields.description') }}: {{ $bookLists->description }}</h3>
-                            {{ trans('cruds.bookList.fields.book_category') }}: {{ $bookLists->book_category->title }} <br>
+                            <h3>{{ trans('cruds.bookList.fields.book_category') }}: {{ $bookLists->book_category->title }}</h3>
                             {{ trans('cruds.bookList.fields.book_tag') }}: 
-                                        @foreach($bookLists->book_tags as $key => $book_tag)
-                                            <span class="label label-info">{{ $book_tag->title }}</span>
-                                        @endforeach
-                                        <br>
+                            <div class='input-select-tag'>
+                                <div class='selected-tags'>
+                                    @foreach($bookLists->book_tags as $key => $book_tag)
+                                        <span class='alert button alert-info'>{{ $book_tag->title }}</span>  
+                                    @endforeach
+                                </div>
+                            </div>
                             {{ trans('cruds.bookList.fields.language') }}: {{ App\Models\BookList::LANGUAGE_SELECT[$bookLists->language] ?? '' }}<br>
                             {{ trans('cruds.bookList.fields.year') }}: {{ $bookLists->year }}<br>
                             {{ trans('cruds.bookList.fields.status') }}: {{ App\Models\BookList::STATUS_SELECT[$bookLists->status] ?? '' }}

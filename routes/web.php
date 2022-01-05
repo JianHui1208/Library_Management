@@ -91,12 +91,16 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::resource('content-managements', 'ContentManagementController');
 });
 
-Route::group(['prefix' => 'users', 'as' => 'users.', 'namespace' => 'User', 'middleware' => ['auth']], function () {
+Route::group(['prefix' => 'users', 'as' => 'users.', 'namespace' => 'User'], function () {
 
     Route::get('book-lists', 'BookListController@getBookList')->name('bookList');
     Route::get('book-lists/{uid}', 'BookListController@showBookList')->name('bookList.show');
 
-    Route::get('my-book-loan', 'BookLoanController@getBookLoan')->name('my-book-loan');
+    Route::group(['middleware' => ['auth']], function () {
+        Route::get('my-book-loan', 'BookLoanController@getBookLoan')->name('my-book-loan');
+
+        Route::get('profile','UsersController@getProfile')->name('profile');
+    });
 });
 
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {

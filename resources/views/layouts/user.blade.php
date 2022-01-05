@@ -44,7 +44,7 @@
             @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                     @auth
-                        <a href="{{ url('/home') }}" class="text-sm text-gray-500 underline">{{ trans('global.home') }}</a>
+                        <a href="{{ route('users.profile') }}" class="text-sm text-gray-500 underline">{{ trans('global.my_profile') }}</a>
                         <a href="#" class="ml-4 text-sm text-gray-500 underline" onclick="event.preventDefault(); confirmAlert(); document.getElementById('logoutform').submit();">{{ trans('global.logout') }}</a>
                     @else
                         <a href="{{ route('users.login.show') }}" class="text-sm text-gray-500 underline">{{ trans('global.login') }}</a>

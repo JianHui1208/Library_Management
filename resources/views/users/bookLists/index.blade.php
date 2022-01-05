@@ -17,7 +17,7 @@
                 <tbody>
                     @foreach($bookLists as $bookList)
                         <tr>
-                            <td class="td_bookList"><a href="{{ route('users.bookList.show', [$bookList->uid]) }}">{{ $bookList->title }}</a></td>
+                            <td class="td_bookList"><a class="linkStyle" href="{{ route('users.bookList.show', [$bookList->uid]) }}">{{ $bookList->title }}</a></td>
                             <td class="td_bookList">{{ $bookList->book_category->title }}</td>
                             <td class="td_bookList">{{ App\Models\BookList::LANGUAGE_SELECT[$bookList->language] ?? '' }}</td>
                             <td class="td_bookList">{{ $bookList->year }}</td>

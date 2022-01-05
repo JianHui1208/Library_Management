@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
             ContentManagementTableSeeder::class,
             SystemSettingsTableSeeder::class,
             BookCategoryTableSeeder::class,
+            BookTagTableSeeder::class,
             BookListTableSeeder::class,
         ]);
     }

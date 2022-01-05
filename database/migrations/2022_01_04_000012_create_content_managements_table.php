@@ -11,7 +11,7 @@ class CreateContentManagementsTable extends Migration
         Schema::create('content_managements', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('title')->nullable();
-            $table->string('description')->nullable();
+            $table->longText('description')->nullable();
             $table->string('status')->nullable();
             $table->timestamps();
             $table->softDeletes();
