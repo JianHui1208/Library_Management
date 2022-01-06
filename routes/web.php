@@ -95,8 +95,10 @@ Route::group(['prefix' => 'users', 'as' => 'users.', 'namespace' => 'User'], fun
     Route::get('book-lists', 'BookListController@getBookList')->name('bookList');
     Route::get('book-lists/{uid}', 'BookListController@showBookList')->name('bookList.show');
 
-    Route::group(['middleware' => ['auth']], function () {
+    Route::get('search', 'BookListController@searchPages')->name('search');
+    Route::post('search-result', 'BookListController@searchResult')->name('search.result');
 
+    Route::group(['middleware' => ['auth']], function () {
 
         Route::get('my-book-loan', 'BookLoanController@getBookLoan')->name('my-book-loan');
 

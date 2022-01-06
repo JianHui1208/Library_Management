@@ -74,7 +74,7 @@
                     {{ trans('global.delete_account') }}
                 </div>
                 <div class="panel-body">
-                    <form method="POST" action="{{ route("profile.password.destroyProfile") }}" onsubmit="return prompt('{{ __('global.delete_account_warning') }}') == '{{ auth()->user()->email }}'">
+                    <form method="POST" action="{{ route("profile.password.destroyProfile") }}" onsubmit="return prompt('{{ __(`global.delete_account_warning`) }}') == '{{ auth()->user()->email }}'">
                         @csrf
                         <div class="form-group">
                             <button class="btn btn-danger" type="submit">

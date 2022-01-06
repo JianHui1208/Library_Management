@@ -148,6 +148,10 @@ video {
     margin-top: 2rem
 }
 
+.mt-8-result {
+    margin-top: 4rem
+}
+
 .ml-12 {
     margin-left: 3rem
 }
@@ -606,4 +610,12 @@ video {
     to {
         opacity: 1
     }
+}
+
+.svg-icon {
+    color: #fff;
+    fill: currentColor;
+    width: 24px;
+    height: 24px;
+    padding: 10px;
 }

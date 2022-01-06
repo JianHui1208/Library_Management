@@ -39,4 +39,9 @@ class BookTag extends Model
     {
         return $date->format('Y-m-d H:i:s');
     }
+
+    public function book_list()
+    {
+        return $this->hasMany(BookTag::class);
+    }
 }

@@ -24,7 +24,7 @@
             @if (Route::has('login'))
                 <div class="hidden fixed top-0 left-0 px-6 py-4 sm:block">
                         <a href="{{ route('users.bookList') }}" class="text-sm text-gray-500 underline">{{ trans('cruds.bookList.title_singular') }}</a>
-                        <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-500 underline">{{ trans('cruds.bookCategory.title_singular') }}</a>
+                        <a href="{{ route('users.search') }}" class="ml-4 text-sm text-gray-500 underline">{{ trans('global.search') }}</a>
                     @auth
                         <a href="{{ route('users.my-book-loan') }}" class="ml-4 text-sm text-gray-500 underline">{{ trans('cruds.bookLoan.title_singular') }}</a>
                     @else

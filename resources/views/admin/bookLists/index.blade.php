@@ -65,7 +65,7 @@
     $(function () {
   let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
 @can('book_list_delete')
-  let deleteButtonTrans = '{{ trans('global.datatables.delete') }}';
+  let deleteButtonTrans = "{{ trans('global.datatables.delete') }}";
   let deleteButton = {
     text: deleteButtonTrans,
     url: "{{ route('admin.book-lists.massDestroy') }}",
