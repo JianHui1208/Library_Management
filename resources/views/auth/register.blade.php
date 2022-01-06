@@ -22,11 +22,27 @@
                         </p>
                     @endif
                 </div>
+                <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
+                    <input type="text" name="username" class="form-control" required placeholder="{{ trans('cruds.user.fields.username') }}" value="{{ old('username', null) }}">
+                    @if($errors->has('username'))
+                        <p class="help-block">
+                            {{ $errors->first('username') }}
+                        </p>
+                    @endif
+                </div>
                 <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                    <input type="email" name="email" class="form-control" required placeholder="{{ trans('global.login_email') }}" value="{{ old('email', null) }}">
+                    <input type="email" name="email" class="form-control" required placeholder="{{ trans('cruds.user.fields.email') }}" value="{{ old('email', null) }}">
                     @if($errors->has('email'))
                         <p class="help-block">
                             {{ $errors->first('email') }}
+                        </p>
+                    @endif
+                </div>
+                <div class="form-group{{ $errors->has('phone_number') ? ' has-error' : '' }}">
+                    <input type="text" name="phone_number" class="form-control" required placeholder="{{ trans('cruds.user.fields.phone_number') }}" value="{{ old('phone_number', null) }}">
+                    @if($errors->has('phone_number'))
+                        <p class="help-block">
+                            {{ $errors->first('phone_number') }}
                         </p>
                     @endif
                 </div>

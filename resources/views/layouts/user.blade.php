@@ -11,6 +11,7 @@
 
         <!-- Styles -->
         <link href="{{ asset('css/welcome.css') }}" rel="stylesheet">
+        @yield('styles')
 
         <style>
             body {

@@ -20,12 +20,12 @@
         <form method="POST" action="{{ route('login') }}">
             @csrf
 
-            <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                <input id="email" type="email" name="email" class="form-control" required autocomplete="email" autofocus placeholder="{{ trans('global.login_email') }}" value="{{ old('email', null) }}">
+            <div class="form-group{{ $errors->has('email') || $errors->has('username') ? ' has-error' : '' }}">
+                <input id="email" type="text" name="login" class="form-control" placeholder="{{ trans('global.login_email') }}" value="{{ old('username') ?: old('email') }}" required autofocus>
 
-                @if($errors->has('email'))
+                @if ($errors->has('username') || $errors->has('email'))
                     <p class="help-block">
-                        {{ $errors->first('email') }}
+                        {{ $errors->first('username') ?: $errors->first('email') }}
                     </p>
                 @endif
             </div>

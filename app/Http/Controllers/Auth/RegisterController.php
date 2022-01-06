@@ -46,10 +46,25 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+        $phone = $data['phone_number'];
+        $firstDigit = substr($phone, 0, 1);
+
+        if($firstDigit == "1"){
+            $phone_number = "+60".$data['phone_number'];
+        }
+
+        if($firstDigit == "0"){
+            $phone_number = "+6".$data['phone_number'];
+        }
+
+        $data['phone_number'] = $phone_number;
+
         return Validator::make($data, [
-            'name'     => ['required', 'string', 'max:255'],
-            'email'    => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'name'              => ['required', 'string', 'max:255'],
+            'email'             => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'username'          => ['required', 'string', 'max:255', 'unique:users'],
+            'phone_number'      => ['required', 'string', 'max:255', 'unique:users'],
+            'password'          => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
 
@@ -60,11 +75,20 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name'     => $data['name'],
-            'email'    => $data['email'],
-            'type'     => 2,
-            'password' => Hash::make($data['password']),
-        ]);
+        $phone = $data['phone_number'];
+        $firstDigit = substr($phone, 0, 1);
+
+        if($firstDigit == "1"){
+            $phone_number = "+60".$data['phone_number'];
+        }
+
+        if($firstDigit == "0"){
+            $phone_number = "+6".$data['phone_number'];
+        }
+
+        $data['phone_number'] = $phone_number;
+        $data['type'] = 2;
+
+        return User::create($data);
     }
 }

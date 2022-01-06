@@ -100,6 +100,8 @@ Route::group(['prefix' => 'users', 'as' => 'users.', 'namespace' => 'User'], fun
         Route::get('my-book-loan', 'BookLoanController@getBookLoan')->name('my-book-loan');
 
         Route::get('profile','UsersController@getProfile')->name('profile');
+        Route::post('update-profile', 'UsersController@updateProfile')->name('update.profile');
+        Route::post('update-password', 'UsersController@changePassword')->name('update.password');
     });
 });
 
