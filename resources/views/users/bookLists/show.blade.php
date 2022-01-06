@@ -2,7 +2,28 @@
 @section('content')
 
     <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-
+        @if(session('message'))
+            <div class="row" style='padding:20px 20px 0 20px;'>
+                <div class="col-lg-12">
+                    <div class="alert alert-success">
+                        <ul class="list-unstyled">
+                            <li class="text-gray-900 dark:text-white" style="list-style: none;">{{ session('message') }}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        @endif
+        @if(session('errors'))
+            <div class="row" style='padding:20px 20px 0 20px;'>
+                <div class="col-lg-12">
+                    <div class="alert alert-danger">
+                        <ul class="list-unstyled">
+                            <li class="text-gray-900 dark:text-white" style="list-style: none;">{{ session('errors') }}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        @endif
         <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
             <div class="grid md:grid-cols-2 ">
                 <div class="p-6">
@@ -10,7 +31,7 @@
                         <div class="ml-4 text-lg leading-7 font-semibold items-center">
                             @if($bookLists->image)
                                 <a href="{{ $bookLists->image->getUrl() }}" target="_blank" style="display: inline-block">
-                                <img src="{{ $bookLists->image->getUrl('thumb') }}">
+                                    <img src="{{ $bookLists->image->getUrl('thumb') }}">
                                 </a>
                             @else
                                 <img src="{{ asset('image/book.png') }}">
@@ -36,11 +57,38 @@
                             {{ trans('cruds.bookList.fields.year') }}: {{ $bookLists->year }}<br>
                             {{ trans('cruds.bookList.fields.status') }}: {{ App\Models\BookList::STATUS_SELECT[$bookLists->status] ?? '' }}
                         </div>
+                        @auth
+                            <form action="{{ route('users.bookloan.add') }}" id="myForm" method="post">
+                                @csrf
+                                <div style="float: right;">
+                                    <input type="hidden" name="book_id" value="{{ $bookLists->id }}">
+                                    @if($bookLoan == null)
+                                        <button class="btn btn-success" value="1" name="type" type="submit">预约</button>
+                                        <button class="btn btn-info" value="3" name="type" type="submit">外接</button>
+                                    @else
+                                        @if($bookLoan->status == 1)
+                                            <h1 class="text-gray-600 dark:text-gray-400">书本在你手中</h1>
+                                        @elseif($bookLoan->status != 5)
+                                            <button class="btn btn-success" value="1" name="type" type="submit">预约</button>
+                                            <button class="btn btn-info" value="3" name="type" type="submit">外接</button>
+                                        @elseif($bookLoan->status == 5)
+                                            <button class="btn btn-danger" value="2" name="type" type="submit">取消预约</button>
+                                        @endif
+                                    @endif
+                                </div>
+                            </form>
+                        @endauth
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
+@endsection
 
+@section('scripts')
+<script>
+    function submitForm() {
+        document.getElementById("myForm").submit();
+    }
+</script>
 @endsection

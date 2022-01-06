@@ -100,7 +100,8 @@ Route::group(['prefix' => 'users', 'as' => 'users.', 'namespace' => 'User'], fun
 
     Route::group(['middleware' => ['auth']], function () {
 
-        Route::get('my-book-loan', 'BookLoanController@getBookLoan')->name('my-book-loan');
+        Route::get('my-book-loan', 'BookLoansController@getBookLoan')->name('my-book-loan');
+        Route::post('bookloan/add', 'BookLoansController@addBookloan')->name('bookloan.add');
 
         Route::get('profile','UsersController@getProfile')->name('profile');
         Route::post('update-profile', 'UsersController@updateProfile')->name('update.profile');

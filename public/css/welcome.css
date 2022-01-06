@@ -458,6 +458,18 @@ video {
     color: black
 }
 
+.btn-success {
+    color: #fff;
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+}
+
+.btn-info {
+    color: #fff;
+    background-color: #5bc0de;
+    border-color: #46b8da;
+}
+
 .profileInput {
     font: 15px/24px "Lato", Arial, sans-serif;
     background-color: rgba(45, 55, 72);

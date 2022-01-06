@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\BookCategory;
 use App\Models\BookList;
+use App\Models\BookLoan;
 use App\Models\BookTag;
 
 class BookListController extends Controller
@@ -20,7 +22,10 @@ class BookListController extends Controller
     public function showBookList($uid)
     {
         $bookLists = BookList::with(['book_category'])->where('uid', $uid)->first();
-        return view('users.bookLists.show',compact('bookLists'));
+
+        $bookLoan = BookLoan::where('user_id', Auth::id())->where('book_id', $bookLists->id)->where('status', '!=', 4)->first();
+
+        return view('users.bookLists.show',compact('bookLists', 'bookLoan'));
     }
 
     public function searchPages()

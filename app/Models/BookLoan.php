@@ -20,6 +20,7 @@ class BookLoan extends Model
         '2' => '逾期未处理',
         '3' => '逾期已处理',
         '4' => 'Close',
+        '5' => 'Make Appointment'
     ];
 
     public $table = 'book_loans';

@@ -44,7 +44,7 @@ class UsersController extends Controller
 
     public function changePassword(UpdateUsersPasswordRequest $request)
     {
-        User::where('id', Auth::id())->update(['password' => $request->input('password')]);
+        User::where('id', Auth::id())->update(['password' => bcrypt($request->input('password'))]);
 
         return redirect()->route('users.profile')->with('message', __('global.change_password_success'));
     }
