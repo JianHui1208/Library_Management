@@ -15,7 +15,9 @@ class BookLoansController extends Controller
 {
     public function getBookLoan()
     {
-        $loan = BookLoan::where('user_id', Auth::id())->get();
+        $loans = BookLoan::with('book', 'book.book_category')->where('user_id', Auth::id())->get();
+
+        return view('users.bookLoans.index', compact('loans'));
     }
 
     public function addBookloan(Request $request)
@@ -32,20 +34,16 @@ class BookLoansController extends Controller
             }
 
             if($request['type'] == "2") {
-                BookLoan::where('book_id', $request['book_id'])->where('status', 5)->update(['status' => 4]);
+                BookLoan::where('book_id', $request['book_id'])->where('user_id', Auth::id())->update(['status' => 4]);
                 DB::commit();
                 return redirect()->back()->with('message', 'You have cancelled your reservation.');
             }
 
             if($request['type'] == "3") {
-                $bookLoan = BookLoan::where('book_id', $request['book_id'])->where('status', 5)->first();
-                if($bookLoan){
-                    $bookLoan->status = 1;
-                    $bookLoan->save();
-                } else {
-                    $request['status'] = 1;
-                    BookLoan::create($request->all());
-                }
+                BookLoan::where('book_id', $request['book_id'])->where('user_id', Auth::id())->update(['status' => 4]);
+
+                $request['status'] = 1;
+                BookLoan::create($request->all());
             }
 
             DB::commit();

@@ -72,6 +72,7 @@
                                             <button class="btn btn-success" value="1" name="type" type="submit">预约</button>
                                             <button class="btn btn-info" value="3" name="type" type="submit">外接</button>
                                         @elseif($bookLoan->status == 5)
+                                            <button class="btn btn-success" disabled>已预约</button>
                                             <button class="btn btn-danger" value="2" name="type" type="submit">取消预约</button>
                                         @endif
                                     @endif
