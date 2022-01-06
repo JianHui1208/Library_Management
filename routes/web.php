@@ -5,9 +5,8 @@ use Illuminate\Support\Facades\Auth;
 
 // Route::redirect('/', '/index');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'Admin\ContentManagementController@getContent')->name('users.content');
+Route::get('/content-detail/{id}', 'Admin\ContentManagementController@getContentDetail')->name('users.content.detail');
 
 Route::get('/home', function () {
     if (session('status')) {
@@ -97,6 +96,8 @@ Route::group(['prefix' => 'users', 'as' => 'users.', 'namespace' => 'User'], fun
     Route::get('book-lists/{uid}', 'BookListController@showBookList')->name('bookList.show');
 
     Route::group(['middleware' => ['auth']], function () {
+
+
         Route::get('my-book-loan', 'BookLoanController@getBookLoan')->name('my-book-loan');
 
         Route::get('profile','UsersController@getProfile')->name('profile');

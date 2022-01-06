@@ -176,4 +176,17 @@ class ContentManagementController extends Controller
         Toastr::success('Content Status Updated Successfully','Success');
         return back();
     }
+
+    public function getContent()
+    {
+        $contents = ContentManagement::where('status', 1)->get();
+
+        return view('welcome', compact('contents'));
+    }
+
+    public function getContentDetail($id)
+    {
+        $contents = ContentManagement::where('id', $id)->first();
+        return view('users.content.show', compact('contents'));
+    }
 }

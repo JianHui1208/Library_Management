@@ -61,6 +61,7 @@
             @yield('content')
         </div>
     </body>
+    @yield('scripts')
     <script>
         function confirmAlert() {
             confirm("{{ trans('global.areYouSure') }}");
