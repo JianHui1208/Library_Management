@@ -29,15 +29,17 @@ class BookTagController extends Controller
                 $viewGate = 'book_tag_show';
                 $editGate = 'book_tag_edit';
                 $deleteGate = 'book_tag_delete';
+                $actionGate = 'book_tag_delete';
                 $crudRoutePart = 'book-tags';
 
                 return view('partials.datatablesActions', compact(
-                'viewGate',
-                'editGate',
-                'deleteGate',
-                'crudRoutePart',
-                'row'
-            ));
+                    'viewGate',
+                    'editGate',
+                    'deleteGate',
+                    'actionGate',
+                    'crudRoutePart',
+                    'row'
+                ));
             });
 
             $table->editColumn('title', function ($row) {

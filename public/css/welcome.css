@@ -378,6 +378,11 @@ video {
     table-layout: fixed;
 }
 
+.table_bookCategory {
+    width: 1000px;
+    table-layout: fixed;
+}
+
 .tbl-content {
     height: 300px;
     overflow-x: auto;

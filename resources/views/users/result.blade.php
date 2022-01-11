@@ -2,7 +2,7 @@
 @section('content')
     <br><br>
     <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-        @foreach ($bookLists as $bookList)
+        @forelse ($bookLists as $bookList)
             <div class="mt-8-result bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
                 <div class="grid md:grid-cols-2 ">
                     <div class="p-6">
@@ -40,7 +40,10 @@
                     </div>
                 </div>
             </div>
-        @endforeach
+        @empty
+            <h1 class="text-gray-500">It is Empty Book</h1>
+            <button onclick="history.back()" class="btn btn-success" style="float: center;">Go Back</button>
+        @endforelse
     </div>
 
 @endsection

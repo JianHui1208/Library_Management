@@ -61,6 +61,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     // Book Tag
     Route::delete('book-tags/destroy', 'BookTagController@massDestroy')->name('book-tags.massDestroy');
+    Route::POST('book-tags/actions', 'BookTagController@actions')->name('book-tags.actions');
     Route::resource('book-tags', 'BookTagController');
 
     // System Settings
@@ -95,11 +96,13 @@ Route::group(['prefix' => 'users', 'as' => 'users.', 'namespace' => 'User'], fun
     Route::get('book-lists', 'BookListController@getBookList')->name('bookList');
     Route::get('book-lists/{uid}', 'BookListController@showBookList')->name('bookList.show');
 
+    Route::get('book-category', 'BookCategoryController@getBookCategory')->name('bookCategory');
+    Route::get('book-category/{uid}', 'BookCategoryController@showBookCategory')->name('bookCategory.show');
+
     Route::get('search', 'BookListController@searchPages')->name('search');
     Route::post('search-result', 'BookListController@searchResult')->name('search.result');
 
     Route::group(['middleware' => ['auth']], function () {
-
         Route::get('my-book-loan', 'BookLoansController@getBookLoan')->name('my-book-loan');
         Route::post('bookloan/add', 'BookLoansController@addBookloan')->name('bookloan.add');
 
