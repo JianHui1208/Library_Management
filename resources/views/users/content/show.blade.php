@@ -6,7 +6,11 @@
             <div class="grid grid-cols-1">
                 <div class="slideshow-container">
                     <div class="fade">
-                        <img class="img-content p-6" src="{{ $contents->image->getUrl() }}" style="width:100%">
+                        @if($contents->image)
+                            <img class="img-content p-6" src="{{ $contents->image->getUrl() }}" style="width:100%">
+                        @else
+                            <img class="img-content p-6" src="{{ asset('image/Untitled.png') }}" style="width:100%">
+                        @endif
                         <h3 class="p-6" style="color: white">{{ $contents->title }}</h3>
                         <p class="p-6" style="color: white">{{ $contents->description }}</p>
                     </div>
