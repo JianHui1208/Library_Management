@@ -9,9 +9,9 @@
                 </div>
 
                 <div class="panel-body">
-                    <h3>My Google Maps Demo</h3>
+                    <!-- <h3>My Google Maps Demo</h3> -->
                     <!--The div element for the map -->
-                    <div id="map"></div>
+                    <!-- <div id="map"></div> -->
                     @if(session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}

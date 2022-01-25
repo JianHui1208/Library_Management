@@ -11,7 +11,7 @@ class BookCategoryController extends Controller
 {
     public function getBookCategory()
     {
-        $bookCategoies = BookCategory::get();
+        $bookCategoies = BookCategory::where('status', 1)->get();
         return view('users.bookCategory.index',compact('bookCategoies'));
     }
 

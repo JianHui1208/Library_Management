@@ -24,18 +24,18 @@ class UsersController extends Controller
     {
         $user = auth()->user();
 
-        $phone = $request->input('phone_number');
-        $firstDigit = substr($phone, 0, 1);
+        // $phone = $request->input('phone_number');
+        // $firstDigit = substr($phone, 0, 1);
 
-        if($firstDigit == "1"){
-            $phone_number = "+60".$request->input('phone_number');
-        }
+        // if($firstDigit == "1"){
+        //     $phone_number = "+60".$request->input('phone_number');
+        // }
 
-        if($firstDigit == "0"){
-            $phone_number = "+6".$request->input('phone_number');
-        }
+        // if($firstDigit == "0"){
+        //     $phone_number = "+6".$request->input('phone_number');
+        // }
 
-        $request['phone_number'] = $phone_number;
+        // $request['phone_number'] = $phone_number;
 
         $user->update($request->all());
 

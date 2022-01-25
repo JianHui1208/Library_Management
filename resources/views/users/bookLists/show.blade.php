@@ -63,17 +63,17 @@
                                 <div style="float: right;">
                                     <input type="hidden" name="book_id" value="{{ $bookLists->id }}">
                                     @if($bookLoan == null)
-                                        <button class="btn btn-success" value="1" name="type" type="submit">预约</button>
-                                        <button class="btn btn-info" value="3" name="type" type="submit">外接</button>
+                                        <button class="btn btn-success" value="1" name="type" type="submit">Booking</button>
+                                        <button class="btn btn-info" value="3" name="type" type="submit">Borrow</button>
                                     @else
                                         @if($bookLoan->status == 1)
-                                            <h1 class="text-gray-600 dark:text-gray-400">书本在你手中</h1>
+                                            <h1 class="text-gray-600 dark:text-gray-400">Borrowing</h1>
                                         @elseif($bookLoan->status != 5)
-                                            <button class="btn btn-success" value="1" name="type" type="submit">预约</button>
-                                            <button class="btn btn-info" value="3" name="type" type="submit">外接</button>
+                                            <button class="btn btn-success" value="1" name="type" type="submit">Booking</button>
+                                            <button class="btn btn-info" value="3" name="type" type="submit">Borrow</button>
                                         @elseif($bookLoan->status == 5)
-                                            <button class="btn btn-success" disabled>已预约</button>
-                                            <button class="btn btn-danger" value="2" name="type" type="submit">取消预约</button>
+                                            <button class="btn btn-success" disabled>Already Booking</button>
+                                            <button class="btn btn-danger" value="2" name="type" type="submit">Cancel Booking</button>
                                         @endif
                                     @endif
                                 </div>

@@ -145,7 +145,7 @@
                     </a>
                 </li>
             @endcan
-            @can('laravel_passport_access')
+            <!-- @can('laravel_passport_access')
                 <li class="c-sidebar-nav-item">
                     <a href="{{ route("admin.laravel-passports.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/laravel-passports") || request()->is("admin/laravel-passports/*") ? "c-active" : "" }}">
                         <i class="fa-fw fas fa-key c-sidebar-nav-icon">
@@ -154,7 +154,7 @@
                         {{ trans('cruds.laravelPassport.title') }}
                     </a>
                 </li>
-            @endcan
+            @endcan -->
             @can('content_management_access')
                 <li class="{{ request()->is("admin/content-managements") || request()->is("admin/content-managements/*") ? "active" : "" }}">
                     <a href="{{ route("admin.content-managements.index") }}">
